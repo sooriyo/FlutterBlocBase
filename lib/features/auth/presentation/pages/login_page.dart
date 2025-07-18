@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:auto_route/auto_route.dart';
 import '../../../../shared/widgets/custom_button.dart';
+import '../../../../shared/widgets/error_widget.dart';
 import '../../../../shared/widgets/loading_widget.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_event.dart';
@@ -26,7 +27,7 @@ class LoginPage extends StatelessWidget {
               initial: () => _buildForm(context),
               loading: () => const LoadingWidget(),
               authenticated: (userId) => Center(child: Text('Welcome, User $userId')),
-              error: (message) => ErrorWidget(message: message),
+              error: (message) => AppErrorWidget(message: message),
             );
           },
         ),
@@ -52,11 +53,11 @@ class LoginPage extends StatelessWidget {
           text: 'Login',
           onPressed: () {
             context.read<AuthBloc>().add(
-                  LoginEvent(
-                    _emailController.text,
-                    _passwordController.text,
-                  ),
-                );
+              LoginEvent(
+                _emailController.text,
+                _passwordController.text,
+              ),
+            );
           },
         ),
       ],
