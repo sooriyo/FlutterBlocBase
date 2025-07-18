@@ -14,7 +14,7 @@ void main() {
   });
 
   testWidgets('LoginPage displays and handles login', (WidgetTester tester) async {
-    await tester.pumpWidget(const App());
+    await tester.pumpWidget(App());
 
     await tester.pumpAndSettle();
 

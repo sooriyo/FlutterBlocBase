@@ -6,7 +6,7 @@ ThemeData lightTheme() => ThemeData(
   colorScheme: ColorScheme.fromSwatch(
     primarySwatch: Colors.blue,
     accentColor: ThemeConstants.accentColor,
-    brightness: Brightness.light, // Explicitly set brightness
+    brightness: Brightness.light,
   ),
   brightness: Brightness.light,
 );
@@ -16,7 +16,7 @@ ThemeData darkTheme() => ThemeData(
   colorScheme: ColorScheme.fromSwatch(
     primarySwatch: Colors.blue,
     accentColor: ThemeConstants.accentColor,
-    brightness: Brightness.dark, // Explicitly set brightness
+    brightness: Brightness.dark,
   ),
   brightness: Brightness.dark,
 );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter_bloc_base/shared/widgets/error_widget.dart';
+import 'package:flutter_bloc_base/shared/widgets/app_error_widget.dart';
 import '../../../../shared/widgets/custom_button.dart';
 import '../../../../shared/widgets/loading_widget.dart';
 import '../bloc/auth_bloc.dart';
@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
               initial: () => _buildForm(context),
               loading: () => const LoadingWidget(),
               authenticated: (userId) => Center(child: Text('Welcome, User $userId')),
-              error: (message) => AppErrorWidget(message: message), // Correct usage
+              error: (message) => AppErrorWidget(message: message),
             );
           },
         ),

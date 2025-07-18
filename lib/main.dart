@@ -12,5 +12,5 @@ void main() async {
   );
 
   await setupDependencies();
-  runApp(const App());
+  runApp(App());
 }

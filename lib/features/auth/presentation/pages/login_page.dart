@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:auto_route/auto_route.dart';
 import '../../../../shared/widgets/custom_button.dart';
-import '../../../../shared/widgets/error_widget.dart';
+import '../../../../shared/widgets/app_error_widget.dart';
 import '../../../../shared/widgets/loading_widget.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_event.dart';

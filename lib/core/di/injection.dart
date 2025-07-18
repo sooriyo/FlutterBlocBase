@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
 import '../network/dio_client.dart';
 import '../../shared/services/storage_service.dart';
+import '../../shared/services/snackbar_service.dart';
 import '../../features/auth/data/datasources/auth_remote_datasource.dart';
 import '../../features/auth/data/repositories/auth_repository_impl.dart';
 import '../../features/auth/domain/repositories/auth_repository.dart';
@@ -16,6 +17,7 @@ Future<void> setupDependencies() async {
 
   // Services
   sl.registerSingleton<StorageService>(StorageService());
+  sl.registerSingleton<SnackbarService>(SnackbarService());
 
   // Data Sources
   sl.registerSingleton<AuthRemoteDataSource>(
@@ -34,6 +36,6 @@ Future<void> setupDependencies() async {
 
   // BLoCs
   sl.registerFactory<AuthBloc>(
-    () => AuthBloc(loginUseCase: sl()),
+        () => AuthBloc(loginUseCase: sl()),
   );
 }
