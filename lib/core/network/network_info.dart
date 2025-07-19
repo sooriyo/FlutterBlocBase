@@ -1,25 +1,19 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:dio/dio.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+import 'package:logger/logger.dart';
 
 class NetworkInfo {
-  final Dio _dio = Dio();
+  final InternetConnection _internetConnection = InternetConnection();
+  final Logger _logger = Logger();
+
+  Stream<bool> get onConnectivityChanged => _internetConnection.onStatusChange.map((status) {
+    final isConnected = status == InternetStatus.connected;
+    _logger.d('Internet status: $status, isConnected: $isConnected');
+    return isConnected;
+  });
 
   Future<bool> get isConnected async {
-    // Check device connectivity
-    final connectivityResult = await Connectivity().checkConnectivity();
-    if (connectivityResult == ConnectivityResult.none) {
-      return false;
-    }
-
-    // Perform true internet check by pinging one.one.one.one
-    try {
-      final response = await _dio.get('https://1.1.1.1', options: Options(
-        sendTimeout: const Duration(seconds: 5),
-        receiveTimeout: const Duration(seconds: 5),
-      ));
-      return response.statusCode == 200;
-    } catch (e) {
-      return false;
-    }
+    final status = await _internetConnection.hasInternetAccess;
+    _logger.d('isConnected check: $status');
+    return status;
   }
 }

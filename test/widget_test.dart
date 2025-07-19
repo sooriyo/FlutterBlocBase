@@ -7,8 +7,9 @@ import 'package:flutter_bloc_base/core/di/injection.dart';
 
 void main() {
   setUp(() async {
+    final directory = await getTemporaryDirectory();
     HydratedBloc.storage = await HydratedStorage.build(
-      storageDirectory: await getTemporaryDirectory(),
+      storageDirectory: HydratedStorageDirectory(directory.path),
     );
     await setupDependencies();
   });
